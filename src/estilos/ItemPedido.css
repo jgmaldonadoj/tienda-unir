@@ -1,0 +1,9 @@
+.celda{
+  text-align: center;
+}
+
+.celda__imagen{
+  height: 100px;
+  width: auto;
+}
+

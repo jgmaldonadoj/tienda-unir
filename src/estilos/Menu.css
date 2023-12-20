@@ -1,0 +1,12 @@
+.menu{
+  -webkit-box-shadow: -2px 9px 42px 4px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 9px 0px 4px rgba(0,0,0,0.75);
+  box-shadow: -2px 9px 32px 4px rgba(0,0,0,0.75);
+}
+
+.menu__title{
+  font-weight: bold;
+}
+.menu__search{
+  display: flex;
+}

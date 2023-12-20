@@ -1,0 +1,30 @@
+.producto{
+  border-color: #282c34;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);;
+}
+
+.producto:hover{
+  background-color: bisque;
+  transform: scale(1.06);
+}
+
+.producto__image{
+  height: 195px;
+  width: auto;
+}
+
+.producto__image__precio{
+  color: #B3C7D5 !important;
+  font-family: 'Bangers', cursive;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.producto_buttons{
+  margin-top: 0;
+  border-top: 0;
+  background: transparent;
+}
+
+
+
