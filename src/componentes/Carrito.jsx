@@ -16,20 +16,18 @@ export const Carrito = () => {
                 clearInterval(refreshIntervalId);
             }, 3000);
         }
-
-
     }, [contador]);
 
 
     return (
 
-        <button type="button" className="btn btn-primary position-relative" id="cart" onClick={() => navigate("/pedido/")} >
+        <button type="button" className="btn btn-primary position-relative" id="cart"  onClick={() => navigate("/pedido/")} >
              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                  {contador}
-                 <span className="visually-hidden"></span>
              </span>
             <i className="fa fa-shopping-cart fa-lg"></i>
         </button>
+
   );
 }
 

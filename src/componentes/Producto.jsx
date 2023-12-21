@@ -23,7 +23,6 @@ function Producto(props) {
             } else {
                 updateContador();
                 productosPedidos.push(productoSeleccionado);
-                //alert('Producto agregado correctamente');
             }
         }
         setProductoSeleccionado(null);

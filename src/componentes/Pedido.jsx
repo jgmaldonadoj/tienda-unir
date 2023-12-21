@@ -58,7 +58,7 @@ function Pedido() {
                             <h4>
                             ${productosPedidos.reduce((accumulator, object) => {
                                 return accumulator + object.precio;
-                            }, 0)}
+                            }, 0).toFixed(2)}
                             </h4>
                         </td>
                     </tr>

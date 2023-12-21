@@ -21,16 +21,15 @@ function ItemPedido(props) {
 
     return (
         <tr>
-
             <td className="celda">
                 <img className="card-img-top celda__imagen" src={props.imagen}/>
                 <br/>
                 {props.nombre}</td>
             <td className="celda align-middle"><input className="form-control form-control-sm" type="number"
-                                                           defaultValue="1" min="1" max={props.stock}/></td>
+                                                      defaultValue="1" min="1" max={props.stock}/></td>
             <td className="align-middle celda">${props.precio.toFixed(2)}</td>
             <td className="celda align-middle"><i className="fa fa-trash text-danger"
-                                            onClick={() => eliminarPedido(props.codigo)}></i></td>
+                                                  onClick={() => eliminarPedido(props.codigo)}></i></td>
         </tr>
     );
 }
