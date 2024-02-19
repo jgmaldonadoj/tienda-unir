@@ -8,8 +8,51 @@ import {Link, redirect, useNavigate} from "react-router-dom";
 export const ProcesarPago = () => {
     const  procesarPago  = useProcesarPago();
 
-    const { setProductosPedidos, setContador} = useContext(ProductoContext);
+    const { setProductosPedidos, setContador, productosPedidos} = useContext(ProductoContext);
 
+    useEffect(() => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1; // Months start at 0!
+        let dd = today.getDate();
+        let detalle=[];
+        productosPedidos.map((prod, index) => {
+            detalle.push({
+                "producto": prod.id,
+                "cantidad": 1
+            })
+        });
+
+        const apiUrl = 'http://localhost:8762/ms-pedidos/pedidos';
+        const requestOptions = {
+            "targetMethod": "POST",
+            "body": {
+                "fecha": yyyy+'-0'+mm+'-'+dd,
+                "pagado": true,
+                "nota": "Nota pedido",
+                "detalle":detalle
+            }
+        };
+        console.log(apiUrl);
+        console.log(requestOptions);
+
+         fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // You can include additional headers if needed
+            },
+            body: JSON.stringify(requestOptions), // Convert postData to JSON string
+        })
+            .then(response => response.json()) // Parse the JSON response
+            .then(data => {
+
+            })
+            .catch(error => {
+                console.error('Error:', error); // Handle errors
+            });
+
+    },[])
     let limpiar = () => {
         setProductosPedidos([]);
         setContador(0);

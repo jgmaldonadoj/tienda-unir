@@ -21,8 +21,34 @@ function Producto(props) {
             if (existe) {
                 alert('El producto ya fue agregado anteriormente');
             } else {
-                updateContador();
-                productosPedidos.push(productoSeleccionado);
+                const requestOptions = {
+                    "targetMethod": "GET"
+                };
+                const apiUrl = 'http://localhost:8762/ms-productos/productos/'+productoSeleccionado.id;
+                console.log('Consultar producto '+apiUrl);
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // You can include additional headers if needed
+                    },
+                    body: JSON.stringify(requestOptions), // Convert postData to JSON string
+                })
+                    .then(response => response.json()) // Parse the JSON response
+                    .then(data => {
+                        console.log(data);
+                        if(data.stock>0){
+                            updateContador();
+                            productosPedidos.push(productoSeleccionado);
+                        }else{
+                            alert('Stock insuficiente para procesar el pedido');
+                        }
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error); // Handle errors
+                    });
+
             }
         }
         setProductoSeleccionado(null);

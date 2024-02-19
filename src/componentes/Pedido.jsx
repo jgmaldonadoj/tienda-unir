@@ -1,10 +1,8 @@
 import React, {useContext, useState} from "react";
 import '../estilos/Producto.css';
 import {ProductoContext} from "../context/ProductoContext";
-import Producto from "./Producto";
 import ItemPedido from "./ItemPedido";
 import {Link} from "react-router-dom";
-import {useProcesarPago} from "../custom-hook/useProcesarPago";
 
 function Pedido() {
     const {productosPedidos, setProductosPedidos} = useContext(ProductoContext);
@@ -68,7 +66,7 @@ function Pedido() {
                 <div className="container d-flex align-items-center justify-content-center">
                 <Link to={"/procesarPago"}>
                         <button className="btn btn-primary"><i className="fas fa-money-bill-alt"></i>
-                            &nbsp;Realizar pago</button>
+                            &nbsp;Finalizar pedido</button>
                     </Link>
                 </div>
 

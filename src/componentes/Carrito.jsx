@@ -8,13 +8,13 @@ export const Carrito = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if(contador>0) {
-            const animacion = function () {
-                document.getElementById('cart').classList.toggle('fade');
-            }
-           const refreshIntervalId =setInterval(animacion, 500);
-            setTimeout(() => {
-                clearInterval(refreshIntervalId);
-            }, 3000);
+                const animacion = function () {
+                   // document.getElementById('cart').classList.toggle('fade');
+                }
+                const refreshIntervalId =setInterval(animacion, 500);
+                setTimeout(() => {
+                    clearInterval(refreshIntervalId);
+                }, 3000);
         }
     }, [contador]);
 

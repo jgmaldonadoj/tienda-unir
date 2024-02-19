@@ -83,7 +83,8 @@ export const useProductos = (filtro) => {
                         ],
                         precio: data.products[k].precio,
                         imagen: imagenes[Math.floor(Math.random() * imagenes.length)],
-                        stock: data.products[k].stock
+                        stock: data.products[k].stock,
+                        id: data.products[k].id
                     })
 
                 }

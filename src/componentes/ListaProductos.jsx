@@ -22,6 +22,7 @@ export const ListaProductos = () => {
                             precio={producto.precio}
                             imagen={producto.imagen}
                             orden={index}
+                            id={producto.id}
                         />
                     ))
                         ):( <div >

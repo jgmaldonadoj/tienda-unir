@@ -5,9 +5,10 @@ import bonsai from '../imagenes/bonsai.jpg';
 export const useProcesarPago = () => {
     const [procesarPago, setProcesarPago] = useState(false);
     useEffect(() => {
+
             setTimeout(() => {
                 setProcesarPago(true);
-            }, 2000);
+            }, 1000);
 
     }, []);
     return procesarPago;
