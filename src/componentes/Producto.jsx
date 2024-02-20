@@ -24,7 +24,8 @@ function Producto(props) {
                 const requestOptions = {
                     "targetMethod": "GET"
                 };
-                const apiUrl = 'http://localhost:8762/ms-productos/productos/'+productoSeleccionado.id;
+                //const apiUrl = 'http://localhost:8762/ms-productos/productos/'+productoSeleccionado.id;
+                const apiUrl = 'https://back-end-cloud-gateway-production.up.railway.app/ms-productos/productos/'+productoSeleccionado.id;
                 console.log('Consultar producto '+apiUrl);
                 fetch(apiUrl, {
                     method: 'POST',

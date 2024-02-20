@@ -7,7 +7,8 @@ export const useCategoria = (filtro) => {
             "aggregate": ["true"]
         }
     };
-    const apiUrl = 'http://localhost:8762/ms-productos-busqueda/products';
+   // const apiUrl = 'http://localhost:8762/ms-productos-busqueda/products';
+    const apiUrl = 'https://back-end-cloud-gateway-production.up.railway.app/ms-productos-busqueda/products';
     useEffect(() => {
 
         fetch(apiUrl, {

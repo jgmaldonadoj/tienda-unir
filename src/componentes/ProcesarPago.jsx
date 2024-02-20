@@ -23,7 +23,8 @@ export const ProcesarPago = () => {
             })
         });
 
-        const apiUrl = 'http://localhost:8762/ms-pedidos/pedidos';
+        //const apiUrl = 'http://localhost:8762/ms-pedidos/pedidos';
+        const apiUrl = 'https://back-end-cloud-gateway-production.up.railway.app/ms-pedidos/pedidos';
         const requestOptions = {
             "targetMethod": "POST",
             "body": {

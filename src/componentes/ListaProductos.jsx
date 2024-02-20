@@ -63,8 +63,20 @@ export const ListaProductos = () => {
     const {categorias} = useContext(ProductoContext);
     let filtrarCategoria = (apiUrl) => {
         console.log(apiUrl);
+        let params = {};
+        if (apiUrl.lastIndexOf('?') !== -1) {
+            const parametros = apiUrl.substring(apiUrl.lastIndexOf('?') + 1).split("&");
+            for (let i = 0; i < parametros.length; i++) {
+                const claveValor = parametros[i].split("=");
+                params[claveValor[0]] = [claveValor[1]];
+
+            }
+            apiUrl=apiUrl.substring(0, apiUrl.lastIndexOf('?'));
+        }
+        console.log(apiUrl);
         const requestOptions = {
-            "targetMethod": "GET"
+            "targetMethod": "GET",
+            "queryParams": params
         };
         const imagenes = [audifonos, bonsai, termometro, planta, audifonos1, traeger, guantes, equipo_bonsai, raspador, terrariro, termopro, kit_ahumador, aspiradora, organizador_auto, inflador, compresor, audifonos2, audifonos3, arbol_jade, arbol_enebro, tortuga, rana, gato, conejo, grinch, arbol_vida, sol_luna, arbol_vida2, farol, hada, luces, gnomo, tiki, dinosaurio, orca, paquete_plantas, lampara_arbol, lampara_mesa, lampara_pie, lampara_circular, lampara_moderna, escultura, estatua_abstracta, homary, elefante, elefante2, musico, balon, jugador, muneco, pintura1, planta_colgante, lirio, cuadro2];
         const productosCompleto = [];
@@ -88,7 +100,8 @@ export const ListaProductos = () => {
                         ],
                         precio: data.products[k].precio,
                         imagen: imagenes[Math.floor(Math.random() * imagenes.length)],
-                        stock: data.products[k].stock
+                        stock: data.products[k].stock,
+                        id: data.products[k].id
                     })
 
                 }
@@ -110,7 +123,9 @@ export const ListaProductos = () => {
                     <p className="lista__puntero">Ver todos ...</p>
                     {
                         categorias.map((categoria, index) => (
-                            <p className="lista__puntero" onClick={() => filtrarCategoria(categoria.uri)}>{categoria.key}  <span>({categoria.count})</span></p>
+                            <p className="lista__puntero"
+                               onClick={() => filtrarCategoria(categoria.uri)}>{categoria.key}
+                                <span>({categoria.count})</span></p>
                         ))
                     }
                 </div>

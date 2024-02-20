@@ -61,7 +61,7 @@ export const useProductos = (filtro) => {
             "targetMethod": "GET"
         };
         const imagenes = [audifonos, bonsai, termometro, planta, audifonos1, traeger, guantes, equipo_bonsai, raspador, terrariro, termopro, kit_ahumador, aspiradora, organizador_auto, inflador, compresor, audifonos2, audifonos3, arbol_jade, arbol_enebro, tortuga, rana, gato, conejo, grinch, arbol_vida, sol_luna, arbol_vida2, farol, hada, luces, gnomo, tiki, dinosaurio, orca, paquete_plantas, lampara_arbol, lampara_mesa, lampara_pie, lampara_circular, lampara_moderna, escultura, estatua_abstracta, homary, elefante, elefante2, musico, balon, jugador, muneco, pintura1, planta_colgante, lirio, cuadro2];
-        const apiUrl = 'http://localhost:8762/ms-productos-busqueda/products';
+        const apiUrl = 'https://back-end-cloud-gateway-production.up.railway.app/ms-productos-busqueda/products';
         const productosCompleto = [];
         fetch(apiUrl, {
             method: 'POST',
