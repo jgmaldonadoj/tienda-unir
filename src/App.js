@@ -1,9 +1,8 @@
 import {useProductos} from "./custom-hook/useProductos";
 import {ProductoContext} from "./context/ProductoContext";
 import {Rutas} from "./rutas/Rutas";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Footer from "./componentes/Footer";
-import {useProcesarPago} from "./custom-hook/useProcesarPago";
 import {useCategoria} from "./custom-hook/useCategoria";
 
 function App() {
@@ -14,13 +13,13 @@ function App() {
         setContador(contador+1);
     };
 
-
-    const productos = useProductos(textoBuscar);
-    const procesarPago = useProcesarPago();
+    const [productos, setProductos] = useProductos(textoBuscar);
+    /*const procesarPago = useProcesarPago();*/
     const categorias = useCategoria();
 
+
     return (
-        <ProductoContext.Provider value={{productos, contador,setContador, updateContador,setProductosPedidos, productosPedidos, setTextoBuscar}}  >
+        <ProductoContext.Provider value={{productos, contador,setContador, updateContador,setProductosPedidos, productosPedidos, setTextoBuscar, categorias, setProductos}}  >
             <Rutas></Rutas>
             <Footer/>
         </ProductoContext.Provider>

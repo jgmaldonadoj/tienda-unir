@@ -1,9 +1,18 @@
 .lista{
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .lista__contenido{
   justify-content: center;
+}
+
+.lista__puntero{
+  cursor: pointer;
+}
+
+.lista__puntero:hover{
+  background-color: deepskyblue;
+  transform: scale(1.10);
 }
 
 

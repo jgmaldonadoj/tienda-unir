@@ -1,4 +1,3 @@
-import logo from '../logo.svg';
 import '../estilos/Menu.css';
 import {Menu} from "../componentes/Menu";
 import React from "react";
@@ -10,7 +9,7 @@ export const Inicio = () => {
 
         <div>
             <Menu/>
-=            <ListaProductos/>
+=           <ListaProductos/>
         </div>
     );
 }
