@@ -6,9 +6,9 @@ export const useProcesarPago = () => {
     const [procesarPago, setProcesarPago] = useState(false);
     useEffect(() => {
 
-            setTimeout(() => {
+            //setTimeout(() => {
                 setProcesarPago(true);
-            }, 1000);
+            //}, 1000);
 
     }, []);
     return procesarPago;

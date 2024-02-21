@@ -8,9 +8,10 @@ import {Link, redirect, useNavigate} from "react-router-dom";
 export const ProcesarPago = () => {
     const  procesarPago  = useProcesarPago();
 
-    const { setProductosPedidos, setContador, productosPedidos} = useContext(ProductoContext);
+    const { setProductosPedidos, setContador, productosPedidos, cargando,setCargando} = useContext(ProductoContext);
 
     useEffect(() => {
+        setCargando(1);
         const today = new Date();
         const yyyy = today.getFullYear();
         let mm = today.getMonth() + 1; // Months start at 0!
@@ -47,7 +48,8 @@ export const ProcesarPago = () => {
         })
             .then(response => response.json()) // Parse the JSON response
             .then(data => {
-
+                console.log(data);
+                setCargando(0);
             })
             .catch(error => {
                 console.error('Error:', error); // Handle errors
@@ -64,7 +66,7 @@ export const ProcesarPago = () => {
         <section className="py-5">
             <div className="container px-4 px-lg-5">
                 {
-                    procesarPago === true ? (
+                    cargando ==0 ? (
                         <div onClick={()=>limpiar()}>
                             <div
                                 className="container d-flex align-items-center justify-content-center"><p>Pago realizado

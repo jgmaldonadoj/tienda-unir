@@ -56,8 +56,9 @@ import cuadro2 from '../imagenes/cuadro2.jpg';
 
 export const useProductos = (filtro) => {
     const [productos, setProductos] = useState([]);
+    const [cargando, setCargando] = useState(1);
     useEffect(() => {
-
+        setCargando(1);
         let requestOptions = {
             "targetMethod": "GET"
         };
@@ -101,25 +102,12 @@ export const useProductos = (filtro) => {
                 }
 
                 setProductos(productosCompleto);
-
-                //  setData(data); // Update state with the response data
+                setCargando(0);
             })
             .catch(error => {
                 console.error('Error:', error); // Handle errors
             });
-
-        /*
-                if (filtro == null || filtro === "") {
-
-                } else {
-                    const result = productosCompleto.filter(obj => {
-                        return obj.nombre.toUpperCase().includes(filtro.toUpperCase());
-                    })
-                    setProductos(result);
-                }
-        */
-
     }, [filtro]);
 
-    return [productos, setProductos]
+    return [productos, setProductos, cargando, setCargando]
 }

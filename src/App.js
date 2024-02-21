@@ -13,13 +13,12 @@ function App() {
         setContador(contador+1);
     };
 
-    const [productos, setProductos] = useProductos(textoBuscar);
+    const [productos, setProductos, cargando, setCargando] = useProductos(textoBuscar);
     /*const procesarPago = useProcesarPago();*/
     const categorias = useCategoria();
 
-
     return (
-        <ProductoContext.Provider value={{productos, contador,setContador, updateContador,setProductosPedidos, productosPedidos, setTextoBuscar, categorias, setProductos}}  >
+        <ProductoContext.Provider value={{productos, contador,setContador, updateContador,setProductosPedidos, productosPedidos, setTextoBuscar, categorias, setProductos, cargando, setCargando}}  >
             <Rutas></Rutas>
             <Footer/>
         </ProductoContext.Provider>

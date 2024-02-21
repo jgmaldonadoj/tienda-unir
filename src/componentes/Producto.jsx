@@ -95,7 +95,7 @@ function Producto(props) {
                                 <div className="col-6">
                                     <ul>
                                         {props.caracteristicas.map((producto, index) => (
-                                            <li key={index}>{producto}</li>
+                                            <li key={crypto.randomUUID()}>{producto}</li>
                                         ))}
                                     </ul>
                                 </div>

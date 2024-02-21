@@ -59,10 +59,10 @@ import lirio from "../imagenes/lirio.jpg";
 import cuadro2 from "../imagenes/cuadro2.jpg";
 
 export const ListaProductos = () => {
-    const {productos, setProductos} = useContext(ProductoContext);
+    const {productos, setProductos, cargando, setCargando} = useContext(ProductoContext);
     const {categorias} = useContext(ProductoContext);
     let filtrarCategoria = (apiUrl) => {
-        console.log(apiUrl);
+        setCargando(1);
         let params = {};
         if (apiUrl.lastIndexOf('?') !== -1) {
             const parametros = apiUrl.substring(apiUrl.lastIndexOf('?') + 1).split("&");
@@ -106,7 +106,7 @@ export const ListaProductos = () => {
 
                 }
                 setProductos(productosCompleto);
-
+                setCargando(0);
                 //  setData(data); // Update state with the response data
             })
             .catch(error => {
@@ -119,10 +119,10 @@ export const ListaProductos = () => {
         <section className="py-5">
             <div className="row">
                 <div className="container col-2 px-4 px-lg-5 lista">
-                    <h3>Categorias</h3>
+                    <h3>Categorías</h3>
                     {
                         categorias.map((categoria, index) => (
-                            <p className="lista__puntero"
+                            <p className="lista__puntero" key={categoria.key}
                                onClick={() => filtrarCategoria(categoria.uri)}>{categoria.key}
                                 <span>({categoria.count})</span></p>
                         ))
@@ -130,11 +130,12 @@ export const ListaProductos = () => {
                 </div>
                 <div className="container col-10 px-4 px-lg-5 lista">
                     <div className="row gx-2 gx-lg-5 row-cols-3 row-cols-md-4 row-cols-xl-5 lista__contenido">
-                        {
+                       {
+                            cargando==1?(<div > <p>Cargando productos... </p> <LinearProgress color="secondary"/> </div>):(
                             productos.length > 0 ? (
                                 productos.map((producto, index) => (
                                     <Producto
-                                        key={index}
+                                        key={producto.id}
                                         nombre={producto.nombre}
                                         codigo={producto.codigo}
                                         stock={producto.stock}
@@ -146,7 +147,8 @@ export const ListaProductos = () => {
                                     />
                                 ))
                             ) : (
-                              <p></p>
+                                <p>No existen productos para mostrar</p>
+                            )
                             )
 
                         }
