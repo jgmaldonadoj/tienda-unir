@@ -120,7 +120,6 @@ export const ListaProductos = () => {
             <div className="row">
                 <div className="container col-2 px-4 px-lg-5 lista">
                     <h3>Categorias</h3>
-                    <p className="lista__puntero">Ver todos ...</p>
                     {
                         categorias.map((categoria, index) => (
                             <p className="lista__puntero"
@@ -146,10 +145,8 @@ export const ListaProductos = () => {
                                         id={producto.id}
                                     />
                                 ))
-                            ) : (<div>
-                                    <p>Cargando productos... </p>
-                                    <LinearProgress color="secondary"/>
-                                </div>
+                            ) : (
+                              <p></p>
                             )
 
                         }

@@ -57,11 +57,22 @@ import cuadro2 from '../imagenes/cuadro2.jpg';
 export const useProductos = (filtro) => {
     const [productos, setProductos] = useState([]);
     useEffect(() => {
-        const requestOptions = {
+
+        let requestOptions = {
             "targetMethod": "GET"
         };
+        if (filtro != '') {
+            requestOptions = {
+                "targetMethod": "GET",
+                "queryParams": {
+                    "nombre": [filtro],
+                    "caracteristicas": [filtro]
+                }
+            };
+        }
         const imagenes = [audifonos, bonsai, termometro, planta, audifonos1, traeger, guantes, equipo_bonsai, raspador, terrariro, termopro, kit_ahumador, aspiradora, organizador_auto, inflador, compresor, audifonos2, audifonos3, arbol_jade, arbol_enebro, tortuga, rana, gato, conejo, grinch, arbol_vida, sol_luna, arbol_vida2, farol, hada, luces, gnomo, tiki, dinosaurio, orca, paquete_plantas, lampara_arbol, lampara_mesa, lampara_pie, lampara_circular, lampara_moderna, escultura, estatua_abstracta, homary, elefante, elefante2, musico, balon, jugador, muneco, pintura1, planta_colgante, lirio, cuadro2];
         const apiUrl = 'https://back-end-cloud-gateway-production.up.railway.app/ms-productos-busqueda/products';
+        console.log(apiUrl);
         const productosCompleto = [];
         fetch(apiUrl, {
             method: 'POST',
@@ -73,7 +84,7 @@ export const useProductos = (filtro) => {
         })
             .then(response => response.json()) // Parse the JSON response
             .then(data => {
-
+                console.log(data);
                 for (var k in data.products) {
                     productosCompleto.push({
                         nombre: data.products[k].nombre,
@@ -97,16 +108,16 @@ export const useProductos = (filtro) => {
                 console.error('Error:', error); // Handle errors
             });
 
-/*
-        if (filtro == null || filtro === "") {
+        /*
+                if (filtro == null || filtro === "") {
 
-        } else {
-            const result = productosCompleto.filter(obj => {
-                return obj.nombre.toUpperCase().includes(filtro.toUpperCase());
-            })
-            setProductos(result);
-        }
-*/
+                } else {
+                    const result = productosCompleto.filter(obj => {
+                        return obj.nombre.toUpperCase().includes(filtro.toUpperCase());
+                    })
+                    setProductos(result);
+                }
+        */
 
     }, [filtro]);
 
