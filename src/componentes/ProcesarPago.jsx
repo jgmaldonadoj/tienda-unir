@@ -69,7 +69,7 @@ export const ProcesarPago = () => {
                     cargando ==0 ? (
                         <div onClick={()=>limpiar()}>
                             <div
-                                className="container d-flex align-items-center justify-content-center"><p>Pago realizado
+                                className="container d-flex align-items-center justify-content-center"><p>Pedido realizado
                                 correctamente <i
                                     className="fas fa-check"></i></p>
                             </div>
